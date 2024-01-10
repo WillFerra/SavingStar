@@ -12,6 +12,104 @@
       <ion-title size="large">Overview</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Monthy Break Down</ion-card-subtitle>
+      <ion-card-title>Finances</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas
+        baseChart
+        class="chart"
+        [data]="BarChartData"
+        [options]="BarChartOptions"
+        [type]="BarChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </ion-card-content>
+  </ion-card>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Breakdown by</ion-card-subtitle>
+      <ion-card-title>Categories</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas
+        baseChart
+        class="chart"
+        [data]="PieChartData"
+        [options]="PieChartOptions"
+        [type]="PieChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+
+      Clothes _______________________ €10 <br>
+      Bowling _______________________ €7 <br>
+      Coffee ________________________ €3
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button expand="block" (click)="setOpen(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>New Transaction</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        
+        <ion-item>
+          <ion-input label="Enter Amount" placeholder="Amount"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select label="Choose Category" placeholder="Category">
+            <ion-select-option value="apple">Clothes</ion-select-option>
+            <ion-select-option value="banana">Food</ion-select-option>
+            <ion-select-option value="orange">Assets</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Choose Date"></ion-input>
+
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Note" placeholder="Note"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select label="Repeat" placeholder="Repeat">
+            <ion-select-option value="apple">Never</ion-select-option>
+            <ion-select-option value="banana">Everyday</ion-select-option>
+            <ion-select-option value="orange">Every Week</ion-select-option>
+            <ion-select-option value="orange">Every Month</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
 </ion-content>
+
