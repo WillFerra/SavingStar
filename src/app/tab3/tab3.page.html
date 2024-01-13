@@ -13,5 +13,92 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Breakdown by</ion-card-subtitle>
+      <ion-card-title>Categories</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas
+        baseChart
+        class="chart"
+        [data]="PieChartData"
+        [options]="PieChartOptions"
+        [type]="PieChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Income</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center"><ion-icon name="cash-outline" size="large"></ion-icon></ion-col>
+          <ion-col class="ion-text-center"><ion-icon name="gift-outline" size="large"></ion-icon></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center"><span>Salary</span></ion-col>
+          <ion-col class="ion-text-center"><span>Gift</span></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center"><span>€135</span></ion-col>
+          <ion-col class="ion-text-center"><span>€15</span></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Expenses</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center"><ion-icon name="shirt-outline" size="large"></ion-icon></ion-col>
+          <ion-col class="ion-text-center"><ion-icon name="bowling-ball-outline" size="large"></ion-icon></ion-col>
+          <ion-col class="ion-text-center"><ion-icon name="cafe-outline" size="large"></ion-icon></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center"><span>Clothes</span></ion-col>
+          <ion-col class="ion-text-center"><span>Bowl..</span></ion-col>
+          <ion-col class="ion-text-center"><span>Coffee</span></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center"><span>€10</span></ion-col>
+          <ion-col class="ion-text-center"><span>€7</span></ion-col>
+          <ion-col class="ion-text-center"><span>€3</span></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

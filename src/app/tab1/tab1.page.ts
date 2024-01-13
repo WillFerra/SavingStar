@@ -5,14 +5,11 @@ import { IonicModule } from '@ionic/angular';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 
-// import { default as Annotation } from 'chartjs-plugin-annotation';
-// import { default as DataLabelsPlugin } from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  // imports: [IonicModule, FormsModule, CommonModule, NgChartsModule]
 })
 export class Tab1Page {
 
