@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ViewChild, OnInit} from '@angular/core';
+import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
+import { ChartsService } from '../services/charts.service';
 
 
 @Component({
@@ -13,8 +14,29 @@ import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 })
 export class Tab1Page {
 
-  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+  // month:string|undefined;
+  // pos:number|undefined;
+  // value:number|undefined;
+
+  fg = new FormGroup({
+    amount: new FormControl(),
+    pos: new FormControl(),
+    label: new FormControl(),
+    category: new FormControl(),
+  });
+
+  @ViewChild(BaseChartDirective) bcd?: BaseChartDirective;
+
+  public BarChartData: ChartConfiguration['data'] = {
+    datasets : [],
+    labels : []
+  };
   
+  public PieChartData: ChartConfiguration['data'] = {
+    datasets : [],
+    labels : []
+  };
+
   isModalOpen = false;
 
   setOpen(isOpen: boolean) {
@@ -23,23 +45,18 @@ export class Tab1Page {
   
   colorArray: any;
 
-  constructor() {}
+  constructor(private chartData:ChartsService) {
+    this.BarChartData.datasets = this.chartData.chartBarData();
+    this.BarChartData.labels = ['Income','Expenses','Left'];
+    this.PieChartData.datasets = this.chartData.chartPieData();
+    this.PieChartData.labels = ['Clothes', 'Bowling', 'Coffee'];
+  }
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter called')
-
   }
 
-  public BarChartData: ChartConfiguration['data'] = {
-    datasets: [
-      {
-        data: [150, 20, 130],
-        label: 'January',
-        fill: 'origin',
-      },
-    ],
-    labels: ['Income', 'Expenses', 'Left'],
-  };
+  // Bar Chart
 
   public BarChartOptions: ChartConfiguration['options'] = {
     elements: {
@@ -63,15 +80,8 @@ export class Tab1Page {
 
   public BarChartType: ChartType = 'bar';
 
-  public PieChartData: ChartConfiguration['data'] = {
-    datasets: [
-      {
-        data: [10, 7, 3],
-        fill: 'origin',
-      },
-    ],
-    labels: ['Clothes', 'Bowling', 'Coffee'],
-  };
+
+  // Pie Chart
 
   public PieChartOptions: ChartConfiguration['options'] = {
     elements: {
@@ -106,5 +116,15 @@ export class Tab1Page {
     active?: {}[];
   }): void {
     // console.log(event, active);
+  }
+
+  addNewTransaction(){
+    let amount = this.fg.controls.amount.value;
+    let pos = this.fg.controls.pos.value;
+    let label = this.fg.controls.label.value;
+    let category = this.fg.controls.category.value;
+
+    this.chartData.newBarChart(amount, pos, label);
+    this.chartData.newPieChart(amount, pos, label, category);
   }
 }
