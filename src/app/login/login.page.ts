@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  name: string | undefined;
+  surname: string | undefined;
+  doB: Date | undefined;
+  email: string | undefined;
+  password: string | undefined;
+  confPassword: string | undefined;
+  showAlert : boolean = false;
+  signupFailed : boolean = false;
+  passwordsMatch : boolean = false;
 
-  ngOnInit() {
+
+  constructor(private router: Router) { }
+  ngOnInit(): void {
+    
   }
 
+  signup() {
+    if(this.name && this.surname && this.doB && this.email && this.password && this.confPassword){
+      if(this.password == this.confPassword){
+        console.log('Signup successful');
+        this.showAlert = true;
+        this.router.navigate(['/tabs']);
+      }
+      else{
+        console.log('Passwords do not match');
+        this.passwordsMatch = true;
+      }
+      
+    }
+    else{
+      console.log('Signup failed');
+      this.signupFailed = true;
+    }
+  }
+
+  hideAlert() {
+    this.showAlert = false;
+  }
 }

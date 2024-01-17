@@ -27,4 +27,8 @@ export class SignupPage{
   hideAlert() {
     this.showAlert = false;
   }
+
+  goToNewPage() {
+    this.router.navigate(['/login']);
+  }
 }
