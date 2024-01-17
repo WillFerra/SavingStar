@@ -23,6 +23,7 @@ export class Tab1Page {
     pos: new FormControl(),
     label: new FormControl(),
     category: new FormControl(),
+    date: new FormControl(),
   });
 
   @ViewChild(BaseChartDirective) bcd?: BaseChartDirective;
@@ -123,7 +124,8 @@ export class Tab1Page {
     let pos = this.fg.controls.pos.value;
     let label = this.fg.controls.label.value;
     let category = this.fg.controls.category.value;
-
+    let date = this.fg.controls.date.value;
+    
     this.chartData.newBarChart(amount, pos, label);
     this.chartData.newPieChart(amount, pos, label, category);
   }

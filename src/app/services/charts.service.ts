@@ -46,9 +46,7 @@ export class ChartsService {
 
   }
 
-  newPieChart(label:string, pos:number, value:number, category:number){
-    this.pieChart.push({
-      data : value,
-    })
+  newPieChart(label:string, pos:number, amount:number, category:number){
+    this.pieChart[0].data.push(amount)
   }
 }
