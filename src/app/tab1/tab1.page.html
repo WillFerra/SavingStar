@@ -45,7 +45,7 @@
 
   <ion-card class="welcome-card">
     <ion-card-header>
-      <ion-card-subtitle>Breakdown by</ion-card-subtitle>
+      <ion-card-subtitle>Expenses by</ion-card-subtitle>
       <ion-card-title>Categories</ion-card-title>
     </ion-card-header>
     <ion-card-content>
@@ -59,9 +59,72 @@
         (chartClick)="chartClicked($event)"
       ></canvas>
 
-      Clothes _______________________ €{{PieChartData.datasets[0].data[0]}} <br>
-      Bowling _______________________ €{{PieChartData.datasets[0].data[1]}} <br>
-      Coffee ________________________ €{{PieChartData.datasets[0].data[2]}}
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            Utilities <br>
+            Rent <br>
+            Gas <br>
+            Cellphone <br>
+            Internet <br>
+            Housing <br>
+            Subscriptions <br>
+            Gym <br>
+            Clothing <br>
+            Transportation <br>
+            Entertainment <br>
+            Healthcare <br>
+            Gifts <br>
+            Pets <br>
+            Insurance <br>
+            Food <br>
+            Car Expenses <br>
+            Miscellaneous
+          </ion-col>
+
+          <ion-col>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________ <br>
+            ______________________
+          </ion-col>
+
+          <ion-col>
+            € {{PieChartData.datasets[0].data[0]}} <br>
+            € {{PieChartData.datasets[0].data[1]}} <br>
+            € {{PieChartData.datasets[0].data[2]}} <br>
+            € {{PieChartData.datasets[0].data[3]}} <br>
+            € {{PieChartData.datasets[0].data[4]}} <br>
+            € {{PieChartData.datasets[0].data[5]}} <br>
+            € {{PieChartData.datasets[0].data[6]}} <br>
+            € {{PieChartData.datasets[0].data[7]}} <br>
+            € {{PieChartData.datasets[0].data[8]}} <br>
+            € {{PieChartData.datasets[0].data[9]}} <br>
+            € {{PieChartData.datasets[0].data[10]}} <br>
+            € {{PieChartData.datasets[0].data[11]}} <br>
+            € {{PieChartData.datasets[0].data[12]}} <br>
+            € {{PieChartData.datasets[0].data[13]}} <br>
+            € {{PieChartData.datasets[0].data[14]}} <br>
+            € {{PieChartData.datasets[0].data[15]}} <br>
+            € {{PieChartData.datasets[0].data[16]}} <br>
+            € {{PieChartData.datasets[0].data[17]}} <br>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
 
@@ -97,9 +160,24 @@
 
           <ion-item>
             <ion-select label="Choose Category" placeholder="Category" formControlName="category">
-              <ion-select-option value="clothes">Clothes</ion-select-option>
+              <ion-select-option value="clothes">Utilities</ion-select-option>
+              <ion-select-option value="food">Rent</ion-select-option>
+              <ion-select-option value="food">Gas</ion-select-option>
+              <ion-select-option value="assets">Cellphone</ion-select-option>
+              <ion-select-option value="clothes">Internet</ion-select-option>
+              <ion-select-option value="food">Housing</ion-select-option>
+              <ion-select-option value="food">Subscriptions</ion-select-option>
+              <ion-select-option value="clothes">Gym</ion-select-option>
+              <ion-select-option value="food">Clothing</ion-select-option>
+              <ion-select-option value="food">Transportation</ion-select-option>
+              <ion-select-option value="clothes">Entertainment</ion-select-option>
+              <ion-select-option value="food">Healthcare</ion-select-option>
+              <ion-select-option value="food">Gifts</ion-select-option>
+              <ion-select-option value="clothes">Pets</ion-select-option>
+              <ion-select-option value="food">Insurance</ion-select-option>
               <ion-select-option value="food">Food</ion-select-option>
-              <ion-select-option value="assets">Assets</ion-select-option>
+              <ion-select-option value="clothes">Car Expenses</ion-select-option>
+              <ion-select-option value="food">Miscellaneous</ion-select-option>
             </ion-select>
           </ion-item>
 

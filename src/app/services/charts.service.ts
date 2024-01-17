@@ -28,7 +28,7 @@ export class ChartsService {
 
   this.pieChart = [
     {
-      data : [10,7,3],
+      data : [10,7,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       fill : 'origin'
     },
   ]

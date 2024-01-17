@@ -50,7 +50,25 @@ export class Tab1Page {
     this.BarChartData.datasets = this.chartData.chartBarData();
     this.BarChartData.labels = ['Income','Expenses','Left'];
     this.PieChartData.datasets = this.chartData.chartPieData();
-    this.PieChartData.labels = ['Clothes', 'Bowling', 'Coffee'];
+    this.PieChartData.labels = [
+      'Utilities',
+      'Rent',
+      'Gas',
+      'Cellphone',
+      'Internet',
+      'Housing',
+      'Subscriptions',
+      'Gym',
+      'Clothing',
+      'Transportation',
+      'Entertainment',
+      'Healthcare',
+      'Gifts',
+      'Pets',
+      'Insurance',
+      'Food',
+      'Car Expenses',
+      'Miscellaneous'];
   }
 
   ionViewDidEnter() {
