@@ -9,6 +9,7 @@ export class ChartsService {
   // @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   barChart: any[] = [];
   pieChart: any[] = [];
+  pieChartCat = ['Utilities', 'Rent', 'Gas', 'Cellphone', 'Internet', 'Housing', 'Subscriptions', 'Gym', 'Clothing', 'Transportation', 'Entertainment', 'Healthcare', 'Gifts', 'Pets', 'Insurance', 'Food', 'Car Expenses', 'Miscellaneous']
   
 
   constructor() {
@@ -28,7 +29,7 @@ export class ChartsService {
 
   this.pieChart = [
     {
-      data : [10,7,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      data : [10,7,3,0,0,0,0,0,5,0,0,0,0,0,0,0,0,8],
       fill : 'origin'
     },
   ]
@@ -42,11 +43,16 @@ export class ChartsService {
     return this.pieChart;
   }
 
-  newBarChart(label:string, pos:number, value:number){
+  newBarChart(pos:number, value:number){
 
   }
 
-  newPieChart(label:string, pos:number, amount:number, category:number){
-    this.pieChart[0].data.push(amount)
+  newPieChart(amount:Number, category:number){
+    console.log(category);
+    console.log("Before:", this.pieChart[0].data[category]);
+
+    this.pieChart[0].data[category] += amount;
+
+    console.log("After:", this.pieChart[0].data[category]);
   }
 }

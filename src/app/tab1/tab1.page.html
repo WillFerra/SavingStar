@@ -24,7 +24,7 @@
       <ion-title size="large">SavingStar</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-card class="welcome-card">
     <ion-card-header>
       <ion-card-subtitle>Monthy Break Down</ion-card-subtitle>
@@ -60,68 +60,17 @@
       ></canvas>
 
       <ion-grid>
-        <ion-row>
-          <ion-col>
-            Utilities <br>
-            Rent <br>
-            Gas <br>
-            Cellphone <br>
-            Internet <br>
-            Housing <br>
-            Subscriptions <br>
-            Gym <br>
-            Clothing <br>
-            Transportation <br>
-            Entertainment <br>
-            Healthcare <br>
-            Gifts <br>
-            Pets <br>
-            Insurance <br>
-            Food <br>
-            Car Expenses <br>
-            Miscellaneous
+        <ion-row *ngFor=" let cat of PieChartData.labels; let i = index">
+          <ion-col style="text-align: right;">
+            {{cat}}
           </ion-col>
-
+    
           <ion-col>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________ <br>
-            ______________________
+            _____________
           </ion-col>
-
-          <ion-col>
-            € {{PieChartData.datasets[0].data[0]}} <br>
-            € {{PieChartData.datasets[0].data[1]}} <br>
-            € {{PieChartData.datasets[0].data[2]}} <br>
-            € {{PieChartData.datasets[0].data[3]}} <br>
-            € {{PieChartData.datasets[0].data[4]}} <br>
-            € {{PieChartData.datasets[0].data[5]}} <br>
-            € {{PieChartData.datasets[0].data[6]}} <br>
-            € {{PieChartData.datasets[0].data[7]}} <br>
-            € {{PieChartData.datasets[0].data[8]}} <br>
-            € {{PieChartData.datasets[0].data[9]}} <br>
-            € {{PieChartData.datasets[0].data[10]}} <br>
-            € {{PieChartData.datasets[0].data[11]}} <br>
-            € {{PieChartData.datasets[0].data[12]}} <br>
-            € {{PieChartData.datasets[0].data[13]}} <br>
-            € {{PieChartData.datasets[0].data[14]}} <br>
-            € {{PieChartData.datasets[0].data[15]}} <br>
-            € {{PieChartData.datasets[0].data[16]}} <br>
-            € {{PieChartData.datasets[0].data[17]}} <br>
+    
+          <ion-col style="text-align: left;">
+            € {{PieChartData.datasets[0].data[i]}}
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -135,11 +84,11 @@
   </ion-fab>
 
   <ion-modal [isOpen]="isModalOpen">
-    <form [formGroup]="fg" (ngSubmit)="addNewTransaction();">
+    <form [formGroup]="fg" ng-Submit="addNewTransaction();">
       <ng-template>
         <ion-header>
           <ion-toolbar>
-            <ion-title>New Transaction</ion-title>
+            <ion-title>Add new Expense</ion-title>
             <ion-buttons slot="end">
               <ion-button (click)="setOpen(false)">Close</ion-button>
             </ion-buttons>
@@ -150,34 +99,26 @@
           <ion-item>
             <ion-input label="Enter Amount" placeholder="Amount" formControlName="amount"></ion-input>
           </ion-item>
-
-          <ion-item>
-            <ion-select label="Choose Label" placeholder="Label" formControlName="pos">
-              <ion-select-option value="income">Income</ion-select-option>
-              <ion-select-option value="expense">Expense</ion-select-option>
-            </ion-select>
-          </ion-item>
-
           <ion-item>
             <ion-select label="Choose Category" placeholder="Category" formControlName="category">
-              <ion-select-option value="clothes">Utilities</ion-select-option>
-              <ion-select-option value="food">Rent</ion-select-option>
-              <ion-select-option value="food">Gas</ion-select-option>
-              <ion-select-option value="assets">Cellphone</ion-select-option>
-              <ion-select-option value="clothes">Internet</ion-select-option>
-              <ion-select-option value="food">Housing</ion-select-option>
-              <ion-select-option value="food">Subscriptions</ion-select-option>
-              <ion-select-option value="clothes">Gym</ion-select-option>
-              <ion-select-option value="food">Clothing</ion-select-option>
-              <ion-select-option value="food">Transportation</ion-select-option>
-              <ion-select-option value="clothes">Entertainment</ion-select-option>
-              <ion-select-option value="food">Healthcare</ion-select-option>
-              <ion-select-option value="food">Gifts</ion-select-option>
-              <ion-select-option value="clothes">Pets</ion-select-option>
-              <ion-select-option value="food">Insurance</ion-select-option>
-              <ion-select-option value="food">Food</ion-select-option>
-              <ion-select-option value="clothes">Car Expenses</ion-select-option>
-              <ion-select-option value="food">Miscellaneous</ion-select-option>
+              <ion-select-option value="0">Utilities</ion-select-option>
+              <ion-select-option value="1">Rent</ion-select-option>
+              <ion-select-option value="2">Gas</ion-select-option>
+              <ion-select-option value="3">Cellphone</ion-select-option>
+              <ion-select-option value="4">Internet</ion-select-option>
+              <ion-select-option value="5">Housing</ion-select-option>
+              <ion-select-option value="6">Subscriptions</ion-select-option>
+              <ion-select-option value="7">Gym</ion-select-option>
+              <ion-select-option value="8">Clothing</ion-select-option>
+              <ion-select-option value="9">Transportation</ion-select-option>
+              <ion-select-option value="10">Entertainment</ion-select-option>
+              <ion-select-option value="11">Healthcare</ion-select-option>
+              <ion-select-option value="12">Gifts</ion-select-option>
+              <ion-select-option value="13">Pets</ion-select-option>
+              <ion-select-option value="14">Insurance</ion-select-option>
+              <ion-select-option value="15">Food</ion-select-option>
+              <ion-select-option value="16">Car Expenses</ion-select-option>
+              <ion-select-option value="17">Miscellaneous</ion-select-option>
             </ion-select>
           </ion-item>
 
@@ -193,23 +134,11 @@
             </ion-modal>
           </ion-item>
 
-          <ion-item>
-            <ion-input label="Note" placeholder="Note"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-select label="Repeat" placeholder="Repeat">
-              <ion-select-option value="never">Never</ion-select-option>
-              <ion-select-option value="everyday">Everyday</ion-select-option>
-              <ion-select-option value="everyWeek">Every Week</ion-select-option>
-              <ion-select-option value="everyMonth">Every Month</ion-select-option>
-            </ion-select>
-          </ion-item>
-
           <br>
           <br>
 
-          <ion-button expand="block" color="success" (click)="setOpen(false)">Save</ion-button>
+          <ion-button expand="block" color="success" type="submit" (click)="addNewTransaction(); setOpen(false)">Save</ion-button>
+          <!-- (click)="setOpen(false)" -->
         </ion-content>
       </ng-template>
     </form>

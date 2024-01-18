@@ -3,15 +3,19 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
+import { ChartsService } from '../services/charts.service';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
+
 export class Tab3Page {
   
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+
+
 
   colorArray: any;
 
@@ -20,7 +24,16 @@ export class Tab3Page {
 
   }
 
-  constructor() {}
+  constructor() {
+    // function sumArray() {
+    //   let total = 0;
+    //   for (let i = 0; i < this.; i++) {
+    //       total += arr[i];
+    //   }
+    //   return total;
+    // }
+  }
+  
 
   public PieChartData: ChartConfiguration['data'] = {
     datasets: [
