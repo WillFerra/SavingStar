@@ -47,6 +47,7 @@ export class ChartsService {
 
   }
 
+  // updating the pie chart
   newPieChart(amount:Number, category:number){
     console.log(category);
     console.log("Before:", this.pieChart[0].data[category]);
