@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { PhotoService } from '../services/photo.service';
+import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -9,23 +10,23 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor(/*private camera: Camera*/) {}
+  constructor(public photoService: PhotoService) {}
 
-  // takePicture() {
-  //   const options: CameraOptions = {
-  //     quality: 100,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     encodingType: this.camera.EncodingType.JPEG,
-  //     mediaType: this.camera.MediaType.PICTURE
-  //   };
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+  }
 
-  //   this.camera.getPicture(options).then((imageData) => {
-  //     let base64Image = 'data:image/jpeg;base64,' + imageData;
-  //     console.log(base64Image);
-  //   }, (err) => {
-  //     console.error('Error taking picture', err);
-  //   });
-  // }
+  fg = new FormGroup({
+    amount: new FormControl(),
+    pos: new FormControl(),
+    label: new FormControl(),
+    category: new FormControl(),
+    date: new FormControl(),
+  });
+
+  addPhotoToGallery(){
+    this.photoService.addNewToGallery();
+  }
 
   isModalOpen = false;
 
