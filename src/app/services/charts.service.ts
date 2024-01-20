@@ -1,6 +1,8 @@
+import { NgFor } from '@angular/common';
 import { Injectable, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartDataset, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +36,18 @@ export class ChartsService {
     },
   ]
 }
+
+//   getTotalData(): Observable<number[]> {
+//     // *NgFor="let data of this.pieChart[0].data"
+//     // {data }
+//     // return of([/* array of numbers representing the total data */]);
+// }
+
+  getTotalData() {
+    // Using the reduce function to sum up all the numbers in the array
+    const total = this.pieChart[0].data.reduce((acc: any, num: any) => acc + num, 0);
+    return total;
+  }
 
   chartBarData(){
     return this.barChart;

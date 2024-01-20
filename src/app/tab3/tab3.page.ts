@@ -1,4 +1,4 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
@@ -11,7 +11,7 @@ import { ChartsService } from '../services/charts.service';
   styleUrls: ['tab3.page.scss']
 })
 
-export class Tab3Page {
+export class Tab3Page implements OnInit {
   
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
@@ -24,14 +24,10 @@ export class Tab3Page {
 
   }
 
-  constructor() {
-    // function sumArray() {
-    //   let total = 0;
-    //   for (let i = 0; i < this.; i++) {
-    //       total += arr[i];
-    //   }
-    //   return total;
-    // }
+  constructor(private chartData:ChartsService) {}
+
+  ngOnInit(){
+    this.updateChartData();
   }
   
 
@@ -78,5 +74,17 @@ export class Tab3Page {
     active?: {}[];
   }): void {
     // console.log(event, active);
+  }
+
+  updateChartData() {
+    this.chartData.getTotalData().subscribe(
+      (data: number[]) => {
+        // Assuming data is an array with the values you want
+        this.PieChartData.datasets[0].data = data;
+      },
+      (error: any) => {
+        console.error('Error fetching data', error);
+      }
+    );
   }
 }
