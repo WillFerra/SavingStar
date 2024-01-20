@@ -5,14 +5,13 @@ import { IonicModule } from '@ionic/angular';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 import { ChartsService } from '../services/charts.service';
-import { Observable } from 'rxjs';
-
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
+
 export class Tab1Page implements OnInit{
 
   allCategories : string[];
@@ -169,10 +168,6 @@ export class Tab1Page implements OnInit{
 
     console.log(this.PieChartData.datasets[0].data);
     console.log(this.PieChartData.labels);
-  }
-
-  ionViewDidEnter() {
-    console.log('ionViewDidEnter called')
   }
 
   // Bar Chart

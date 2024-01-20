@@ -27,13 +27,13 @@ export class ChartsService {
       }
     ]
   
-  this.pieChart = [
-    {
-      data : [10,7,3,0,0,0,0,0,5,0,0,0,0,0,0,0,0,8],
-      fill : 'origin'
-    },
-  ]
-}
+    this.pieChart = [
+      {
+        data : [10,7,3,0,0,0,0,0,5,0,0,0,0,0,0,0,0,8],
+        fill : 'origin'
+      },
+    ]
+  }
 
   getTotalData() {
     // Using the reduce function to sum up all the numbers in the array
@@ -55,16 +55,9 @@ export class ChartsService {
 
   // updating the pie chart
   newPieChart(amount:number, category:number){
-    console.log(category);
-    console.log("Before:", this.pieChart[0].data[category]);
-    
     amount = Number(amount);
     this.pieChart[0].data[category] += amount;
 
-    console.log("After:", this.pieChart[0].data[category]);
-
-    if (this.chart) {
-      this.chart.update();
-    }
+    this.chart?.update();
   }
 }
