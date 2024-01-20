@@ -13,3 +13,9 @@ ion-img {
     border-radius: 50%;
     overflow: hidden;
 }
+
+.custom-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -31,9 +31,9 @@
 
     <ion-row>
       <ion-col></ion-col>
-      <ion-col>
+      <ion-col class="custom-center">
         <ion-img
-          src="assets/Profilepic.png"
+          src={{profilePic}}
           alt="Profile Picture"
         ></ion-img>
       </ion-col>
@@ -42,27 +42,113 @@
 
     <ion-row>
       <ion-col class="textAlign">
-        <h2> Naomi Vella </h2>
+        <h2> {{name}} </h2>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="textAlign">
-        <h5> 23. 10. 1995 </h5>
+        <h5> {{dateOfBirth}}</h5>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="textAlign">
-        <h5> naomivella&#64;gmail.com </h5>
+        <h5> {{email}} </h5>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <br>
   <br>
-  <ion-button expand="block">Edit Profile</ion-button>
-  <ion-button expand="block">Settings</ion-button>
-  <ion-button expand="block">Delete Account</ion-button>
+
+  <div class="ion-padding">
+    <ion-button id="open-modal" expand="block">Edit Profile</ion-button>
+    <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Edit Profile </ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="custom-center" (click)="updateProfilePic('assets/Profilepic.png')">
+                <ion-button>
+                  <ion-img
+                  src='assets/Profilepic.png'
+                  alt="Profile Picture"
+                ></ion-img>
+                </ion-button>
+              </ion-col>
+              <ion-col class="custom-center" (click)="updateProfilePic('assets/Logo.png')">
+                <ion-button>
+                  <ion-img
+                  src='assets/Logo.png'
+                  alt="Profile Picture"
+                ></ion-img>
+                </ion-button>
+              </ion-col>
+              <ion-col class="custom-center" (click)="updateProfilePic('assets/dollarSign.jpg')">
+                <ion-button>
+                  <ion-img
+                  src='assets/dollarSign.jpg'
+                  alt="Profile Picture"
+                ></ion-img>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            <ion-input
+              label="Enter your full name"
+              labelPlacement="stacked"
+              type="text"
+              placeholder="Your full name"
+              [(ngModel)]="name"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input
+              label="Enter your date of Birth"
+              labelPlacement="stacked"
+              type="text"
+              placeholder="Your Date of Birth"
+              [(ngModel)]="dateOfBirth"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input
+              label="Enter your email"
+              labelPlacement="stacked"
+              type="text"
+              placeholder="Your email"
+              [(ngModel)]="email"
+            ></ion-input>
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   
+
+    <ion-button expand="block" (click)="goToSettings()">Settings</ion-button>
+
+    <ion-button expand="block" id="present-alert" (click)="deleteAccount()">Delete Account</ion-button>
+    <ion-alert
+      trigger="present-alert"
+      header="Account Deleted"
+      message="Sorry to see you go! Account Successfully Deleted"
+      [buttons]="alertButtons"
+    ></ion-alert>
+
+  </div>
 </ion-content>

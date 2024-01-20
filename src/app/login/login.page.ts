@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+
+export class LoginPage {
 
   name: string | undefined;
   surname: string | undefined;
@@ -20,9 +21,6 @@ export class LoginPage implements OnInit {
 
 
   constructor(private router: Router) { }
-  ngOnInit(): void {
-    
-  }
 
   signup() {
     if(this.name && this.surname && this.doB && this.email && this.password && this.confPassword){
@@ -45,5 +43,9 @@ export class LoginPage implements OnInit {
 
   hideAlert() {
     this.showAlert = false;
+  }
+
+  goToSignup() {
+    this.router.navigate(['/signup']);
   }
 }
