@@ -16,7 +16,7 @@ export class SettingsPage implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/tab4']);
+    this.router.navigate(['tabs/tab4']);
   }
 
   logout() {
