@@ -2,13 +2,12 @@ import { NgFor } from '@angular/common';
 import { Injectable, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartDataset, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChartsService {
-  // @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   barChart: any[] = [];
   pieChart: any[] = [];
   pieChartCat = ['Utilities', 'Rent', 'Gas', 'Cellphone', 'Internet', 'Housing', 'Subscriptions', 'Gym', 'Clothing', 'Transportation', 'Entertainment', 'Healthcare', 'Gifts', 'Pets', 'Insurance', 'Food', 'Car Expenses', 'Miscellaneous']
@@ -28,7 +27,6 @@ export class ChartsService {
       }
     ]
   
-
   this.pieChart = [
     {
       data : [10,7,3,0,0,0,0,0,5,0,0,0,0,0,0,0,0,8],
@@ -36,12 +34,6 @@ export class ChartsService {
     },
   ]
 }
-
-//   getTotalData(): Observable<number[]> {
-//     // *NgFor="let data of this.pieChart[0].data"
-//     // {data }
-//     // return of([/* array of numbers representing the total data */]);
-// }
 
   getTotalData() {
     // Using the reduce function to sum up all the numbers in the array
@@ -62,12 +54,17 @@ export class ChartsService {
   }
 
   // updating the pie chart
-  newPieChart(amount:Number, category:number){
+  newPieChart(amount:number, category:number){
     console.log(category);
     console.log("Before:", this.pieChart[0].data[category]);
-
+    
+    amount = Number(amount);
     this.pieChart[0].data[category] += amount;
 
     console.log("After:", this.pieChart[0].data[category]);
+
+    if (this.chart) {
+      this.chart.update();
+    }
   }
 }

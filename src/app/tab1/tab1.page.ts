@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 import { ChartsService } from '../services/charts.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -239,7 +240,7 @@ export class Tab1Page implements OnInit{
   addNewTransaction(){
     
 
-    let amount = this.fg.controls.amount.value;
+    let amount: number = this.fg.controls.amount.value;
     let pos = this.fg.controls.pos.value;
     let category = this.fg.controls.category.value;
     let date = this.fg.controls.date.value;
