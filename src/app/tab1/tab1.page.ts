@@ -76,6 +76,10 @@ export class Tab1Page implements OnInit{
     this.allCategories = this.chartData.pieChartCat;
     this.pieValues = this.chartData.chartPieData()[0].data;
     
+    this.gettingValues();
+  }
+
+  public gettingValues(){
     if(this.chartData.pieChart[0].data[0]>0){
       this.PieChartData.datasets[0].data.push(this.pieValues[0]);
       this.PieChartData.labels?.push('Utilities');
@@ -242,5 +246,10 @@ export class Tab1Page implements OnInit{
     
     // this.chartData.newBarChart(amount, pos);
     this.chartData.newPieChart(amount, category);
+    this.pieValues = this.chartData.chartPieData()[0].data;
+    this.PieChartData.datasets[0].data = [];
+    this.PieChartData.labels = [];
+    this.gettingValues();
+    this.bcd?.update();
   }
 }
