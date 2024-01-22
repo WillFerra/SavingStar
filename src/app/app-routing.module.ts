@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SignupPageModule } from './signup/signup.module';
 
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren:() => import('./signup/signup.module').then (m => SignupPageModule)
+  },
+  
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
