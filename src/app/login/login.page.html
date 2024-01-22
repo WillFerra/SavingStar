@@ -1,0 +1,68 @@
+<ion-content class="ion-padding">
+
+  <ion-img src="assets/Logo.png" style="width: 100px; height: auto; margin: auto;"></ion-img>
+  <h1 style="text-align: center;">Saving Star</h1>
+
+  <br>
+
+  <h3 style="text-align: center;">Signup</h3>
+
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="name" type="email" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Surname</ion-label>
+    <ion-input [(ngModel)]="surname" type="input" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Date of Birth</ion-label>
+    <br>
+    <ion-input [(ngModel)]="doB" type="Date" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email" type="email" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input [(ngModel)]="password" type="password" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Confrim Password</ion-label>
+    <ion-input [(ngModel)]="confPassword" type="password" required></ion-input>
+  </ion-item>
+
+  <ion-alert
+    [isOpen]="showAlert"
+    header="Signup Successful"
+    (didDismiss)="hideAlert()">
+  </ion-alert>
+
+  <ion-alert
+    [isOpen]="signupFailed"
+    header="Signup Failed"
+    (didDismiss)="hideAlert()">
+  </ion-alert>
+
+  <ion-alert
+    [isOpen]="passwordsMatch"
+    header="Passwords need to match"
+    (didDismiss)="hideAlert()">
+  </ion-alert>
+
+  <ion-button id="signup" expand="block" (click)="signup()" style="padding-top: 30px;">Signup</ion-button>
+
+
+  <ion-text (click)="goToSignup()" style="text-decoration: underline; color: blue; cursor: pointer;">
+    Already have an account? Log in here!
+  </ion-text>
+
+</ion-content>
+
+

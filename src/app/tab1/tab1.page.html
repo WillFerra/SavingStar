@@ -1,0 +1,147 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-grid>
+        <ion-row align-items-center>
+          <ion-col size="20px">
+            <ion-thumbnail style="width: 25px; height: auto;">
+              <img alt="Logo" src="assets/Logo.png"/>
+            </ion-thumbnail>
+          </ion-col>
+          <ion-col>
+            SavingStar
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-icon src="assets/Logo.png"></ion-icon>
+      <ion-title size="large">SavingStar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Monthy Break Down</ion-card-subtitle>
+      <ion-card-title>Finances</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas
+        baseChart
+        class="chart"
+        [data]="BarChartData"
+        [options]="BarChartOptions"
+        [type]="BarChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Expenses by</ion-card-subtitle>
+      <ion-card-title>Categories</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas
+        baseChart
+        class="chart"
+        [data]="PieChartData"
+        [options]="PieChartOptions"
+        [type]="PieChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+
+      <ion-grid>
+        <ion-row *ngFor=" let cat of PieChartData.labels; let i = index">
+          <ion-col style="text-align: right;">
+            {{cat}}
+          </ion-col>
+    
+          <ion-col>
+            _____________
+          </ion-col>
+    
+          <ion-col style="text-align: left;">
+            € {{PieChartData.datasets[0].data[i]}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button expand="block" (click)="setOpen(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-modal [isOpen]="isModalOpen">
+    <form [formGroup]="fg" ng-Submit="addNewTransaction();">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Add new Expense</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          
+          <ion-item>
+            <ion-input label="Enter Amount" placeholder="Amount" formControlName="amount"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-select label="Choose Category" placeholder="Category" formControlName="category">
+              <ion-select-option value="0">Utilities</ion-select-option>
+              <ion-select-option value="1">Rent</ion-select-option>
+              <ion-select-option value="2">Gas</ion-select-option>
+              <ion-select-option value="3">Cellphone</ion-select-option>
+              <ion-select-option value="4">Internet</ion-select-option>
+              <ion-select-option value="5">Housing</ion-select-option>
+              <ion-select-option value="6">Subscriptions</ion-select-option>
+              <ion-select-option value="7">Gym</ion-select-option>
+              <ion-select-option value="8">Clothing</ion-select-option>
+              <ion-select-option value="9">Transportation</ion-select-option>
+              <ion-select-option value="10">Entertainment</ion-select-option>
+              <ion-select-option value="11">Healthcare</ion-select-option>
+              <ion-select-option value="12">Gifts</ion-select-option>
+              <ion-select-option value="13">Pets</ion-select-option>
+              <ion-select-option value="14">Insurance</ion-select-option>
+              <ion-select-option value="15">Food</ion-select-option>
+              <ion-select-option value="16">Car Expenses</ion-select-option>
+              <ion-select-option value="17">Miscellaneous</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-input label="Choose Date" formControlName="date"></ion-input>
+
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime presentation="date" id="datetime"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+
+          <br>
+          <br>
+
+          <ion-button expand="block" color="success" type="submit" (click)="addNewTransaction(); setOpen(false)">Save</ion-button>
+        </ion-content>
+      </ng-template>
+    </form>
+  </ion-modal>
+  
+</ion-content>
+
