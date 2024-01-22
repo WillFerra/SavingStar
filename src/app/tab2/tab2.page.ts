@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 import { FormControl, FormGroup, FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -10,7 +10,7 @@ import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 })
 export class Tab2Page {
 
-  constructor(public photoService: PhotoService) {}
+  constructor(public photoService: PhotoService, private router: Router) {}
 
   async ngOnInit() {
     await this.photoService.loadSaved();
@@ -32,5 +32,9 @@ export class Tab2Page {
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+
+  viewReceipt(){
+    this.router.navigate(['/receipt']);
   }
 }
