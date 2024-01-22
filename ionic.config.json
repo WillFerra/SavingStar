@@ -1,7 +1,0 @@
-{
-  "name": "SavingStar",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
